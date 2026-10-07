@@ -16,3 +16,6 @@ batch_work/
 __pycache__/
 *.pyc
 .DS_Store
+
+# Release zips built by scripts/release.sh
+dist/

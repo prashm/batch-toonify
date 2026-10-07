@@ -1,5 +1,9 @@
 # batch-toonify
 
+[![Latest release](https://img.shields.io/github/v/release/prashm/batch-toonify)](https://github.com/prashm/batch-toonify/releases/latest)
+[![Downloads](https://img.shields.io/github/downloads/prashm/batch-toonify/total)](https://github.com/prashm/batch-toonify/releases)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 Turn a whole folder of real photos into cartoon illustrations, in one consistent style, using Google's
 **Nano Banana Pro** (Gemini 3 Pro Image) model.
 
@@ -99,14 +103,20 @@ Either download it from <https://www.python.org/downloads/>, or use Homebrew:
 brew install python
 ```
 
-**2. Download the code:**
+**2. Download the code.** Easiest: go to the
+**[latest release](https://github.com/prashm/batch-toonify/releases/latest)**, download
+`batch-toonify-vX.Y.Z.zip` under **Assets**, double-click it to unzip, then in Terminal:
 
 ```bash
-git clone https://github.com/<your-username>/batch-toonify.git
-cd batch-toonify
+cd ~/Downloads/batch-toonify-vX.Y.Z
 ```
 
-(No git? On the GitHub page click **Code → Download ZIP**, unzip it, then `cd` into the folder.)
+(Replace `X.Y.Z` with the version you downloaded.) Or, if you use git:
+
+```bash
+git clone https://github.com/prashm/batch-toonify.git
+cd batch-toonify
+```
 
 **3. Create a virtual environment and install the dependencies:**
 
@@ -142,15 +152,21 @@ winget install Python.Python.3.12
 
 Close and reopen PowerShell, then check that `py --version` works.
 
-**2. Download the code:**
+**2. Download the code.** Easiest: go to the
+**[latest release](https://github.com/prashm/batch-toonify/releases/latest)**, download
+`batch-toonify-vX.Y.Z.zip` under **Assets**, right-click it → **Extract All...**, then in PowerShell:
 
 ```powershell
-git clone https://github.com/<your-username>/batch-toonify.git
-cd batch-toonify
+cd $HOME\Downloads\batch-toonify-vX.Y.Z\batch-toonify-vX.Y.Z
 ```
 
-(No git? On the GitHub page click **Code → Download ZIP**, unzip it, then `cd` into the folder,
-e.g. `cd $HOME\Downloads\batch-toonify-main`.)
+(Windows' "Extract All" creates a folder inside a folder of the same name; replace `X.Y.Z` with the
+version you downloaded.) Or, if you use git:
+
+```powershell
+git clone https://github.com/prashm/batch-toonify.git
+cd batch-toonify
+```
 
 **3. Create a virtual environment and install the dependencies:**
 
@@ -358,6 +374,24 @@ The cartoon is still saved; the path is printed in the terminal. Open it from th
 - `input/`, `output/`, `batch_work/` (which contains encoded copies of your photos) and `batch_jobs.json`
   are all git-ignored, so `git add` won't publish your photos. Delete `batch_work/` after your jobs are fetched
   if you don't want those copies kept on disk.
+
+## Releasing (maintainers)
+
+Releases are what users download, and GitHub counts every download of the attached zip
+(shown in the badge at the top). To publish a new version on macOS/Linux with the
+[GitHub CLI](https://cli.github.com/) installed and logged in (`gh auth login`):
+
+```bash
+./scripts/release.sh 1.0.0
+```
+
+The script checks you're on an up-to-date, committed `main`, builds `dist/batch-toonify-v1.0.0.zip`
+from the committed files (excluding `scripts/`, `.gitignore`, `.gitattributes`), tags `v1.0.0` and
+creates the GitHub Release with auto-generated notes. Download counts per release:
+
+```bash
+gh api repos/prashm/batch-toonify/releases --jq '.[] | .tag_name + ": " + ([.assets[].download_count] | add | tostring)'
+```
 
 ## License
 
