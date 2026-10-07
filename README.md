@@ -289,6 +289,11 @@ Convert this photo into a high-quality cartoon illustration. Keep each person's 
 Turn this photo into a 3D animated movie character render with soft lighting and expressive features. Keep each person's likeness, hair, skin tone, clothing and pose. Do not add any text.
 ```
 
+**Ghibli style** (the author's favorite; tested with great results)
+```
+Convert this photo into a ghibli cartoon. Make sure to maintain eye color, skin color, hair color and facial features. Make sure the photo subjects are not changed.
+```
+
 **Hand-drawn anime / watercolor film style**
 ```
 Convert this photo into a hand-drawn anime film still with soft watercolor backgrounds and warm natural light. Maintain eye color, skin color, hair color and facial features. Make sure the photo subjects are not changed.
