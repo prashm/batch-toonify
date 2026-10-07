@@ -13,7 +13,7 @@ cd "$(dirname "$0")/.."
 # Only release committed, pushed code from main.
 [[ "$(git branch --show-current)" == "main" ]] || { echo "Switch to main first."; exit 1; }
 [[ -z "$(git status --porcelain)" ]] || { echo "Commit or stash your changes first."; exit 1; }
-git fetch -q origin main
+git fetch -q --tags origin main
 [[ "$(git rev-parse HEAD)" == "$(git rev-parse origin/main)" ]] || { echo "Push main to GitHub first."; exit 1; }
 if git rev-parse -q --verify "refs/tags/${TAG}" >/dev/null; then echo "Tag ${TAG} already exists."; exit 1; fi
 
