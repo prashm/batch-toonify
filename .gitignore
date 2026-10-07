@@ -1,0 +1,18 @@
+# Secrets and local environment
+.env
+.venv/
+
+# Your photos and results: the folders are kept, their contents never committed
+input/*
+!input/.gitkeep
+output/*
+!output/.gitkeep
+
+# Batch API working files (contain encoded copies of your photos)
+batch_jobs.json
+batch_work/
+
+# Python / OS clutter
+__pycache__/
+*.pyc
+.DS_Store
